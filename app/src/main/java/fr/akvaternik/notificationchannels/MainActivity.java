@@ -4,7 +4,9 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -49,6 +51,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         configurationTextView = (TextView) findViewById(R.id.configuration_textview);
+
+        Button settingsButton = (Button) findViewById(R.id.settings_button);
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToChannelSettings();
+            }
+        });
     }
 
     private void configureNotifications() {
@@ -94,5 +104,12 @@ public class MainActivity extends AppCompatActivity {
 
             configurationTextView.setText(configurationText);
         }
+    }
+
+    private void goToChannelSettings() {
+        Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
+        intent.putExtra(Settings.EXTRA_CHANNEL_ID, ARTICLE_CHANNEL_ID);
+        intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
+        startActivity(intent);
     }
 }
