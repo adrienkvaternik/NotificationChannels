@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">NotificationChannels</string>
+
+    <!-- UI -->
+    <string name="notify">Notify</string>
+
+    <!-- Notifications -->
+    <string name="article_channel_name">Article channel</string>
+    <string name="new_article_title">New article</string>
+    <string name="new_article_text">There is a new article</string>
 </resources>
