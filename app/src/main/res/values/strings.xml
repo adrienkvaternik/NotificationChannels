@@ -6,9 +6,12 @@
     <string name="configuration">Display configuration</string>
     <string name="settings">Go to settings</string>
     <string name="delete">Delete channel</string>
+    <string name="notify_personal_group">Notify personal group</string>
 
     <!-- Notifications -->
     <string name="article_channel_name">Article channel</string>
     <string name="new_article_title">New article</string>
     <string name="new_article_text">There is a new article</string>
+    <string name="personal_group_name">Personal group</string>
+    <string name="business_group_name">Business group</string>
 </resources>
