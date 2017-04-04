@@ -12,4 +12,20 @@
         android:layout_centerInParent="true"
         android:text="@string/notify"/>
 
+    <Button
+        android:id="@+id/configuration_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/notify_button"
+        android:text="@string/configuration"/>
+
+    <TextView
+        android:id="@+id/configuration_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/configuration_button"
+        android:layout_centerHorizontal="true"
+        tools:text="Configuration text"/>
+
 </RelativeLayout>

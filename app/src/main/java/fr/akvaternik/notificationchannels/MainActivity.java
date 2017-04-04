@@ -9,6 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,12 +19,19 @@ public class MainActivity extends AppCompatActivity {
 
     private NotificationManager notificationManager;
     private int notificationId = 0;
+    private TextView configurationTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        bindUI();
+
+        configureNotifications();
+    }
+
+    private void bindUI() {
         Button notifyButton = (Button) findViewById(R.id.notify_button);
         notifyButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,7 +40,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        configureNotifications();
+        Button configurationButton = (Button) findViewById(R.id.configuration_button);
+        configurationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                displayChannelConfiguration();
+            }
+        });
+
+        configurationTextView = (TextView) findViewById(R.id.configuration_textview);
     }
 
     private void configureNotifications() {
@@ -59,5 +77,22 @@ public class MainActivity extends AppCompatActivity {
 
         notificationManager.notify(notificationId, notification);
         notificationId++;
+    }
+
+    private void displayChannelConfiguration() {
+        NotificationChannel channel = notificationManager.getNotificationChannel(ARTICLE_CHANNEL_ID);
+        if (channel != null) {
+            CharSequence name = channel.getName();
+            int importance = channel.getImportance();
+            int lightColor = channel.getLightColor();
+            long[] vibrationPattern = channel.getVibrationPattern();
+
+            String configurationText = "Name: " + name + "\n" +
+                    "Importance: " + importance + "\n" +
+                    "Color: " + String.format("#%06X", 0xFFFFFF & lightColor) + "\n" +
+                    "Pattern: " + Arrays.toString(vibrationPattern);
+
+            configurationTextView.setText(configurationText);
+        }
     }
 }

@@ -3,6 +3,7 @@
 
     <!-- UI -->
     <string name="notify">Notify</string>
+    <string name="configuration">Display configuration</string>
 
     <!-- Notifications -->
     <string name="article_channel_name">Article channel</string>
