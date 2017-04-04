@@ -59,6 +59,14 @@ public class MainActivity extends AppCompatActivity {
                 goToChannelSettings();
             }
         });
+
+        Button deleteButton = (Button) findViewById(R.id.delete_button);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteChannel();
+            }
+        });
     }
 
     private void configureNotifications() {
@@ -111,5 +119,9 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(Settings.EXTRA_CHANNEL_ID, ARTICLE_CHANNEL_ID);
         intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
         startActivity(intent);
+    }
+
+    private void deleteChannel() {
+        notificationManager.deleteNotificationChannel(ARTICLE_CHANNEL_ID);
     }
 }
